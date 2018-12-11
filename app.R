@@ -25,42 +25,42 @@ ui =  fluidPage(titlePanel("Creating the tabs!"),
                 ))))
 
 server = function(input, output) {
-  
+
   var = reactive({
     mtcars[, input$characterstic]
   })
-  
-  
+
+
   output$myplot0 = renderPrint({
     summary(var())
   })
-  
+
   output$myplot4  = renderPlotly({
-    
-    Z= 
+
+    Z=
       ggplot(mtcars, aes(x=var()))+geom_density()+labs(x=input$characterstic)
-    
+
     ggplotly(Z)
     #plot_ly(mtcars,x=var(), y = "", type = "scatter")
   })
-  
-  
+
+
   output$myplot3  = renderPlotly({
-    
-    Z= 
+
+    Z=
       ggplot(mtcars, aes(x=var(),y=1))+geom_point()+labs(x=input$characterstic, y = "")
-    
+
     ggplotly(Z)
     #plot_ly(mtcars,x=var(), y = "", type = "scatter")
   })
-  
-  
+
+
   output$myplot2  = renderPlotly({
     Z= ggplot(mtcars, aes(x=var()))+geom_histogram()+labs(x=input$characterstic)
     #hist(var(), main = "Histogram", xlab=input$characterstic)
     ggplotly(Z)
   })
-  
+
   output$myplot1  = renderPlotly({
     # boxplot(mtcars[, input$characterstic], main = "Boxplot", xlab=input$characterstic)
     Z= ggplot(mtcars, aes(x="",y=mtcars[,input$characterstic]))+geom_boxplot()+labs(x = input$characterstic, y = "Frequency" )
